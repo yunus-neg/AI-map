@@ -2,7 +2,7 @@ let points = [];
 let connections = [];
 
 function setup() {
-  createCanvas(800, 700);
+  createCanvas(800, 600);
 
   for (let i = 0; i < 12; i++) {
     points.push(new Point(i));
