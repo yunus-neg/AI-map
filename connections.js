@@ -1,5 +1,6 @@
 class Connection {
   constructor(p1, p2, Cr, Cg, Cb) {
+    this.indexes=[p1.index,p2.index]
     this.p1 = p1;
     this.p2 = p2;
     this.p1x = p1.getAxis().x;
@@ -13,18 +14,13 @@ class Connection {
   show() {
     let c = color(this.Cr, this.Cg, this.Cb);
     stroke(c);
-    this.p1x = this.p1.getAxis().x;
-    this.p1y = this.p1.getAxis().y;
-    this.p2x = this.p2.getAxis().x;
-    this.p2y = this.p2.getAxis().y;
+    this.updateAxis()
+
     line(this.p1x, this.p1y, this.p2x, this.p2y);
   }
 
   isConnected(p1, p2) {
-    this.p1x = this.p1.getAxis().x;
-    this.p1y = this.p1.getAxis().y;
-    this.p2x = this.p2.getAxis().x;
-    this.p2y = this.p2.getAxis().y;
+    this.updateAxis()
     let x1 = p1.getAxis().x,
       y1 = p1.getAxis().y,
       x2 = p2.getAxis().x,
@@ -48,5 +44,11 @@ class Connection {
       return true;
     }
     return false;
+  }
+  updateAxis(){
+    this.p1x = this.p1.getAxis().x;
+    this.p1y = this.p1.getAxis().y;
+    this.p2x = this.p2.getAxis().x;
+    this.p2y = this.p2.getAxis().y;
   }
 }
