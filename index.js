@@ -7,7 +7,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 600);
+  let less = 45;
+  createCanvas(windowWidth - less, windowHeight - less);
 
   for (let i = 0; i < Object.keys(pointsData).length; i++) {
     let index = pointsData[i].index;
@@ -17,6 +18,7 @@ function setup() {
     let x = pointsData[i].x;
     let y = pointsData[i].y;
     let r = pointsData[i].r;
+    let level = pointsData[i].level;
     let newPoint = new Point(
       index,
       name,
@@ -24,20 +26,21 @@ function setup() {
       connectedPoints,
       x,
       y,
-      r
+      r,
+      level
     );
     points.push(newPoint);
   }
 
   connectionSetup();
-
-  newPointsPosition();
+  levelsetup();
+  //   newPointsPosition();
+  newPositionv2();
   console.log(points);
 
 }
 
 function draw() {
-  let x = random(10);
   background(80);
 
   push();
@@ -66,10 +69,10 @@ function connectionSetup() {
     points[i].setConnection(newconnectedPoints);
   }
 
-  //   points.sort((a, b) => b.numberOfConnection - a.numberOfConnection);
+  // points.sort((a, b) => b.numberOfConnection - a.numberOfConnection);
 }
 function refresh() {
-newPointsPosition()
+  newPosition();
 }
 
 function newPointsPosition() {
@@ -94,6 +97,95 @@ function newPointsPosition() {
   }
 }
 
+function newPosition() {
+  let maxlevel = 0;
+  for (const point of points) {
+    maxlevel = Math.max(maxlevel, point.level);
+  }
+  let newHeight = height / maxlevel;
+  console.log(newHeight);
+
+  for (const point of points) {
+    let min = (point.level - 1) * newHeight;
+
+    let max = point.level * newHeight;
+    console.log(min, max, point.index);
+
+    let newX = random(point.r, width - point.r);
+    let newY = (min + max) / 2;
+    let vector = createVector(newX, newY);
+    // console.log(vector,point.index);
+
+    point.changeAxis(vector);
+  }
+}
+
+function newPositionv2() {
+  let maxlevel = 0;
+  let levels=new Array(points.length).fill(0)
+  for (const point of points) {
+    maxlevel = Math.max(maxlevel, point.level);
+    levels[point.level]++
+  }
+  points[0].changeAxis(createVector(width/2,points[0].r/2))
+  let newHeight = height / maxlevel;
+  console.log(newHeight);
+
+  for (let i=0;i<points.length;i++) {
+    let connectedPoints=points[i].connectedPoints
+    let countconnected=levels[points[i].level]
+    let newWidth=width/countconnected
+    for(let j=0;j<connectedPoints.length;j++){
+       newWidth=width/countconnected
+
+      let newX=newWidth*(j+1)
+      let newY=points[i].y+50;
+      let vector=createVector(newX,newY)
+      console.log(connectedPoints[j]);
+
+      let np=points.find(point => point.index === connectedPoints[j].index)
+      np.changeAxis(vector)
+    }
+  }
+
+  // for (const point of points) {
+  //   let min = (point.level - 1) * newHeight;
+
+  //   let max = point.level * newHeight;
+  //   console.log(min, max, point.index);
+
+  //   let newX = random(point.r, width - point.r);
+  //   let newY = (min + max) / 2;
+  //   let vector = createVector(newX, newY);
+  //   // console.log(vector,point.index);
+
+  //   point.changeAxis(vector);
+  // }
+}
+
+function levelsetup() {
+  points[0].level = 1;
+  for (let i = 0; i < points.length; i++) {
+    for (let j = 0; j < points[i].connectedPoints.length; j++) {
+      let pointIndex = points[i].connectedPoints[j].index;
+      let connectedPoint = points.find(point => point.index === pointIndex);
+      connectedPoint.level =
+        points[i].level + 1 < connectedPoint.level
+          ? points[i].level + 1
+          : connectedPoint.level;
+    }
+  }
+
+  points.sort((a, b) => a.level - b.level);
+}
 function savej() {
-  saveJSON(points, "points.json");
+  let newpointjson = points;
+  for (const point of newpointjson) {
+    let newconnection = [];
+    for (const link of point.connectedPoints) {
+      newconnection.push(link.index);
+    }
+    point.connectedPoints = newconnection;
+  }
+  saveJSON(newpointjson, "points.json");
 }

@@ -1,5 +1,5 @@
 class Point {
-  constructor(index,name, numberOfConnection, connectedPoints, x, y, r) {
+  constructor(index,name, numberOfConnection, connectedPoints, x, y, r,level) {
     this.index = index || index == 0 ? index : -1;
     this.name = name ? name : "Unknown";
     this.r = r ? r : 75;
@@ -7,6 +7,7 @@ class Point {
     this.y = y ? y : random(this.r * 2, height - this.r * 2);
     this.connectedPoints = connectedPoints ? connectedPoints : [];
     this.numberOfConnection = numberOfConnection ? numberOfConnection : this.connectedPoints.length;
+    this.level=level?level:100;
   }
   show() {
     textAlign(CENTER, CENTER);
