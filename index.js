@@ -2,6 +2,7 @@ let points = [];
 let pointsData;
 let connections = [];
 
+
 function preload() {
   pointsData = loadJSON("points.json");
 }
@@ -34,10 +35,10 @@ function setup() {
 
   connectionSetup();
   levelsetup();
-  //   newPointsPosition();
-  newPositionv2();
+  newPointsPosition();
+  // newPositionv2();
   console.log(points);
-
+  // movingPoint=points[0]
 }
 
 function draw() {
@@ -50,6 +51,19 @@ function draw() {
   pop();
   for (const point of points) {
     point.show();
+  }
+}
+
+function mouseDragged() {
+  if (!points[0].clicked(mouseX, mouseY)) {
+    points.sort(function(point) {
+      if (point.clicked(mouseX, mouseY)) return -1;
+      return 1;
+    });
+  }
+  if (points[0].clicked(mouseX, mouseY)) {
+    let vector = createVector(mouseX, mouseY);
+    points[0].changeAxis(vector);
   }
 }
 
@@ -122,29 +136,29 @@ function newPosition() {
 
 function newPositionv2() {
   let maxlevel = 0;
-  let levels=new Array(points.length).fill(0)
+  let levels = new Array(points.length).fill(0);
   for (const point of points) {
     maxlevel = Math.max(maxlevel, point.level);
-    levels[point.level]++
+    levels[point.level]++;
   }
-  points[0].changeAxis(createVector(width/2,points[0].r/2))
+  points[0].changeAxis(createVector(width / 2, points[0].r / 2));
   let newHeight = height / maxlevel;
   console.log(newHeight);
 
-  for (let i=0;i<points.length;i++) {
-    let connectedPoints=points[i].connectedPoints
-    let countconnected=levels[points[i].level]
-    let newWidth=width/countconnected
-    for(let j=0;j<connectedPoints.length;j++){
-       newWidth=width/countconnected
+  for (let i = 0; i < points.length; i++) {
+    let connectedPoints = points[i].connectedPoints;
+    let countconnected = levels[points[i].level];
+    let newWidth = width / countconnected;
+    for (let j = 0; j < connectedPoints.length; j++) {
+      newWidth = width / countconnected;
 
-      let newX=newWidth*(j+1)
-      let newY=points[i].y+50;
-      let vector=createVector(newX,newY)
+      let newX = newWidth * (j + 1);
+      let newY = points[i].y + 50;
+      let vector = createVector(newX, newY);
       console.log(connectedPoints[j]);
 
-      let np=points.find(point => point.index === connectedPoints[j].index)
-      np.changeAxis(vector)
+      let np = points.find(point => point.index === connectedPoints[j].index);
+      np.changeAxis(vector);
     }
   }
 

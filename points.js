@@ -1,13 +1,24 @@
 class Point {
-  constructor(index,name, numberOfConnection, connectedPoints, x, y, r,level) {
+  constructor(
+    index,
+    name,
+    numberOfConnection,
+    connectedPoints,
+    x,
+    y,
+    r,
+    level
+  ) {
     this.index = index || index == 0 ? index : -1;
     this.name = name ? name : "Unknown";
     this.r = r ? r : 75;
     this.x = x ? x : random(this.r * 2, width - this.r * 2);
     this.y = y ? y : random(this.r * 2, height - this.r * 2);
     this.connectedPoints = connectedPoints ? connectedPoints : [];
-    this.numberOfConnection = numberOfConnection ? numberOfConnection : this.connectedPoints.length;
-    this.level=level?level:100;
+    this.numberOfConnection = numberOfConnection
+      ? numberOfConnection
+      : this.connectedPoints.length;
+    this.level = level ? level : 100;
   }
   show() {
     textAlign(CENTER, CENTER);
@@ -15,7 +26,7 @@ class Point {
     // textSize(this.name.length>10?10:15)
     // console.log(this.name.length);
 
-    text("["+this.index+"] "+this.name.substring(0,9), this.x, this.y);
+    text("[" + this.index + "] " + this.name.substring(0, 9), this.x, this.y);
   }
   getAxis() {
     return createVector(this.x, this.y);
@@ -27,8 +38,13 @@ class Point {
   getConnected() {
     return this.connectedPoints;
   }
-  setConnection(connection){
-    this.connectedPoints=connection;
-    this.numberOfConnection =this.connectedPoints.length
+  setConnection(connection) {
+    this.connectedPoints = connection;
+    this.numberOfConnection = this.connectedPoints.length;
+  }
+  clicked(x, y) {
+    let d = dist(this.x, this.y, x, y);
+    if (d < this.r/2) return true;
+    return false
   }
 }
