@@ -1,0 +1,78 @@
+[
+  {
+
+
+  },
+  {
+    "index": 0,
+    "name": "البوابة الرئيسية",
+    "connectedPoints": [11,2,13]
+
+  },
+  {
+    "index": 1,
+    "name": "العلوم"
+
+  },
+  {
+    "index": 2,
+    "name": "العلوم الطبية",
+    "connectedPoints": [1,3,4]
+  },
+  {
+    "index": 3,
+    "name": "الهندسة",
+    "connectedPoints": [5]
+  },
+  {
+    "index": 4,
+    "name": "العمارة والتخطيط"
+  },
+  {
+    "index": 5,
+    "name": "الشريعة",
+    "connectedPoints": [6]
+  },
+  {
+    "index": 6,
+    "name": "اللغة العربية",
+    "connectedPoints": [14]
+  },
+  {
+    "index": 7,
+    "name": "الاسنان"
+  },
+  {
+    "index": 8,
+    "name": "الطب",
+    "connectedPoints": [6]
+  },
+  {
+    "index": 9,
+    "name": "الزراعة",
+    "connectedPoints": [14]
+  },
+  {
+    "index": 10,
+    "name": "الصيدلة",
+    "connectedPoints": [7,9,8]
+  },
+  {
+    "index": 11,
+    "name": "الاقتصاد",
+    "connectedPoints": [10,1]
+  },
+  {
+    "index": 12,
+    "name": "التربية"
+  },
+  {
+    "index": 13,
+    "name": "التحضيرية",
+    "connectedPoints": [4,12]
+  },
+  {
+    "index": 14,
+    "name": "الحاسب"
+  }
+]

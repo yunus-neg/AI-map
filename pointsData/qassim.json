@@ -1,0 +1,77 @@
+[
+  {
+
+
+  },
+  {
+    "index": 0,
+    "name": "Buraydah",
+    "connectedPoints": [1, 4, 8,12],
+    "distance":[30,50,35]
+
+  },
+  {
+    "index": 1,
+    "name": "Unayzah",
+    "connectedPoints": [2, 3],
+    "distance":[34,18]
+  },
+  {
+    "index": 2,
+    "name": "AlZulfi",
+    "connectedPoints": [6],
+    "distance":[24]
+  },
+  {
+    "index": 3,
+    "name": "Al-Badai",
+    "connectedPoints": [5],
+    "distance":[20]
+  },
+  {
+    "index": 4,
+    "name": "Riyadh-Alkhabra",
+    "connectedPoints": [3],
+    "distance":[31]
+  },
+  {
+    "index": 5,
+    "name": "AlRass"
+  },
+  {
+    "index": 6,
+    "name": "UmSedrah",
+    "connectedPoints": [7],
+    "distance":[38]
+  },
+  {
+    "index": 7,
+    "name": "Shakra"
+  },
+  {
+    "index": 8,
+    "name": "Al-Bukayriyah",
+    "connectedPoints": [9],
+    "distance":[24]
+  },
+  {
+    "index": 9,
+    "name": "Sheehyah",
+    "connectedPoints": [10],
+    "distance":[14]
+  },
+  {
+    "index": 10,
+    "name": "Dhalfa",
+    "connectedPoints": [11],
+    "distance":[16]
+  },
+  {
+    "index": 11,
+    "name": "Mulaida"
+  },
+  {
+    "index": 12,
+    "name": "airport"
+  }
+]
