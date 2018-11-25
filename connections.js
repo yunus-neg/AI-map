@@ -15,6 +15,8 @@ class Connection {
   show() {
     this.updateAxis();
     let c = color(this.Cr, this.Cg, this.Cb);
+    if(this.p1.lat!==-1&&this.p1.lng!==-1&&this.p2.lat!==-1&&this.p2.lng!==-1){
+
     push();
     stroke(c);
     line(this.p1x, this.p1y, this.p2x, this.p2y);
@@ -26,6 +28,7 @@ class Connection {
     textSize(15);
     text(this.distance, (this.p1x + this.p2x) / 2, (this.p1y + this.p2y) / 2);
     pop();
+    }
   }
 
   isConnected(p1, p2) {

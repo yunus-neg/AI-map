@@ -6,73 +6,102 @@
   {
     "index": 0,
     "name": "البوابة الرئيسية",
-    "connectedPoints": [11,2,13]
+    "connectedPoints": [11,2,13],
+    "lat": 26.348167,
+    "lng":43.773193
 
   },
   {
     "index": 1,
-    "name": "العلوم"
-
+    "name": "العلوم",
+    "lat": 26.347276376753985,
+"lng": 43.76750390308882
   },
   {
     "index": 2,
     "name": "العلوم الطبية",
-    "connectedPoints": [1,3,4]
+    "connectedPoints": [1,3,4],
+    "lat": 26.3470111844449,
+"lng": 43.767539238182735
   },
   {
     "index": 3,
     "name": "الهندسة",
-    "connectedPoints": [5]
+    "connectedPoints": [5],
+    "lat": 26.347013,
+    "lng":43.7660243
   },
   {
     "index": 4,
-    "name": "العمارة والتخطيط"
+    "name": "العمارة والتخطيط",
+    "lat": 26.347069,
+    "lng":43.7660836
   },
   {
     "index": 5,
     "name": "الشريعة",
-    "connectedPoints": [6]
+    "connectedPoints": [6],
+    "lat": 26.3482436,
+    "lng":43.7648052
   },
   {
     "index": 6,
     "name": "اللغة العربية",
-    "connectedPoints": [14]
+    "connectedPoints": [14],
+    "lat": 26.3492627,
+    "lng":43.7648615
   },
   {
     "index": 7,
-    "name": "الاسنان"
+    "name": "الاسنان",
+    "lat": 26.3504355,
+    "lng":43.7661208
   },
   {
     "index": 8,
     "name": "الطب",
-    "connectedPoints": [6]
+    "connectedPoints": [6],
+    "lat": 26.35028,
+    "lng":43.7669114
   },
   {
     "index": 9,
     "name": "الزراعة",
-    "connectedPoints": [14]
+    "connectedPoints": [14],
+    "lat": 26.3506327,
+    "lng":43.7669027
   },
   {
     "index": 10,
     "name": "الصيدلة",
-    "connectedPoints": [7,9,8]
+    "connectedPoints": [7,9,8],
+    "lat": 26.3504489,
+    "lng":43.7678961
   },
   {
     "index": 11,
     "name": "الاقتصاد",
-    "connectedPoints": [10,1]
+    "connectedPoints": [10,1],
+    "lat": 26.3491522,
+    "lng":43.7684959
   },
   {
     "index": 12,
-    "name": "التربية"
+    "name": "التربية",
+    "lat": 26.3447344,
+    "lng":43.764655
   },
   {
     "index": 13,
     "name": "التحضيرية",
-    "connectedPoints": [4,12]
+    "connectedPoints": [4,12],
+    "lat": 26.3454236,
+    "lng":43.7643794
   },
   {
     "index": 14,
-    "name": "الحاسب"
+    "name": "الحاسب",
+    "lat": 26.3584409,
+    "lng":43.7659686
   }
 ]
