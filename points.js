@@ -8,13 +8,11 @@ class Point {
     y,
     r,
     level,
-    distance,
-    lat,
-    lng
+    distance
   ) {
     this.index = index;
     this.name = name ? name : "Unknown";
-    this.r = r ? r : 10;
+    this.r = r ? r : 75;
     this.x = x ? x : random(this.r * 2, width - this.r * 2);
     this.y = y ? y : random(this.r * 2, height - this.r * 2);
     this.connectedPoints = connectedPoints ? connectedPoints : [];
@@ -26,66 +24,31 @@ class Point {
     this.Cr = 0;
     this.Cg = 0;
     this.Cb = 0;
-    this.lat = lat ? lat : -1;
-    this.lng = lng ? lng : -1;
   }
   show() {
-    let vector = myMap.latLngToPixel(this.lat, this.lng);
-    // let position = myMap.pixelToLatLng(this.x, this.y);
-    // let goodPosition =
-    //   vector.x != this.x ||
-    //   vector.y != this.y ||
-    //   position.lat != this.lat ||
-    //   position.lng != this.lng;
-    // console.log(vector.x,vector.y);
-
-    // if (!goodPosition)
-      // console.log(
-      //   vector.x,
-      //   this.x,
-      //   vector.y,
-      //   this.y,
-      //   position.lat,
-      //   this.lat,
-      //   position.lng,
-      //   this.lng
-      // );
-
-    // console.log(goodPosition);
-
     this.numberOfConnection = this.connectedPoints.length;
-    if (this.lat !== -1 && this.lng !== -1 ) {
-      this.x = vector.x;
-      this.y = vector.y;
-      // console.log(vector);
+    push();
+    stroke(this.Cr, this.Cg, this.Cb);
+    strokeWeight(1.75);
 
-      // push();
-      stroke(this.Cr, this.Cg, this.Cb);
-      // strokeWeight(1.75);
+    ellipse(this.x, this.y, this.r, this.r);
+    pop();
+    textSize(this.name.length>10?11:15)
 
-      ellipse(this.x, this.y, this.r, this.r);
+    let XY = "\n" + this.x + " | " + this.y;
+    // textSize(14);
+    let textString = "[" + this.index + "] " + this.name.substring(0, 100);
+    textAlign(CENTER, CENTER);
 
-      // pop();
-      textSize(this.name.length > 10 ? 11 : 15);
-
-      let XY = "\n" + this.x + " | " + this.y;
-      // textSize(14);
-      let textString = "[" + this.index + "] " + this.name.substring(0, 100);
-      textAlign(CENTER, CENTER);
-
-      // text(textString, this.x, this.y);
-    }
-    else
-    console.log("erreo");
-
+    text(textString, this.x, this.y);
   }
   getAxis() {
     return createVector(this.x, this.y);
   }
-  // changeAxis(New) {
-  //   this.x = New.x;
-  //   this.y = New.y;
-  // }
+  changeAxis(New) {
+    this.x = New.x;
+    this.y = New.y;
+  }
   getConnected() {
     return this.connectedPoints;
   }
