@@ -5,7 +5,7 @@ let dbclick = false;
 let less = 20;
 let move = [];
 function preload() {
-  pointsData = loadJSON("./pointsData/qu.json");
+  pointsData = loadJSON("./pointsData/QU.json");
 }
 
 function setup() {
